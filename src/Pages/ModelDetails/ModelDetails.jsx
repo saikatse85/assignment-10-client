@@ -1,13 +1,15 @@
 import React, { useEffect, useState, use } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { ScaleLoader } from "react-spinners";
 import ModelDetailsCard from "../../Components/ModelDetailsCard/ModelDetailsCard";
 import { AuthContext } from "../../Auth/AuthContext/AuthContext";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ModelDetails = () => {
   const { id } = useParams();
   const { user } = use(AuthContext);
-
+  const navigate = useNavigate();
   const [model, setModel] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +19,7 @@ const ModelDetails = () => {
     fetch(`http://localhost:3000/models/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setModel(data.result);
+        setModel(data.result || data);
         setLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -25,40 +27,71 @@ const ModelDetails = () => {
 
   // Delete
   const handleDelete = (id) => {
-    console.log("delete", id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/models/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            navigate("/all-models");
+            // Optional: UI update code here, like removing the deleted model from state
+          })
+          .catch((err) => {
+            console.log(err.message);
+            Swal.fire({
+              title: "Error!",
+              text: "Something went wrong.",
+              icon: "error",
+            });
+          });
+      }
+    });
   };
 
-  // Purchase Handler
-  const handlePurchase = async (model) => {
-    try {
-      // 1) Save purchase to purchase collection
-      await fetch("http://localhost:3000/purchase", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          modelId: model._id,
-          name: model.name,
-          image: model.image,
-          email: user.email,
-          buyerEmail: user.email,
-          purchasedAt: new Date(),
-        }),
+  const handlePurchase = () => {
+    fetch(`http://localhost:3000/purchase`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        modelId: model._id,
+        name: model.name,
+        image: model.image,
+        email: user.email,
+        purchasedBy: user.email,
+        purchasedAt: new Date(),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Successfully Purchased");
       });
-
-      // 2) Purchased count increase in main models collection
-      const updated = await fetch(`http://localhost:3000/models/${model._id}`, {
-        method: "PATCH",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          purchased: model.purchased + 1, // Increase count
-        }),
-      }).then((res) => res.json());
-
-      // Update UI real-time
-      setModel(updated);
-    } catch (error) {
-      console.log(error.message);
-    }
+    setModel((prev) => ({
+      ...prev,
+      purchased: prev.purchased + 1,
+    })).catch((err) => {
+      console.log(err.message);
+    });
   };
 
   if (loading) {

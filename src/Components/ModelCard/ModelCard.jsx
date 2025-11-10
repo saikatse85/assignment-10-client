@@ -4,7 +4,6 @@ import { Link } from "react-router";
 const ModelCard = ({ model }) => {
   const { _id, name, framework, description, image } = model;
   const [hovered, setHovered] = useState(false);
-  console.log(model);
 
   return (
     <div>

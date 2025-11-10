@@ -29,7 +29,7 @@ const ModelDetailsCard = ({ model, user, handleDelete, handlePurchase }) => {
             className="w-full h-full object-cover hover:scale-105 duration-500"
           />
           <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur">
-            Purchased {purchased} times
+            Purchased : {purchased} times
           </div>
         </div>
 
