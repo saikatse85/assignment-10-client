@@ -8,6 +8,10 @@ import MyContainer from "../MyContainer/MyContainer";
 import { Link } from "react-router";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-gradient-to-br from-[#0d3c3b] to-[#0f7c76] text-gray-200 px-6 md:px-20 py-12 relative overflow-hidden">
       {/* Subtle background pattern */}
@@ -41,7 +45,10 @@ const Footer = () => {
               </a>
             </div>
 
-            <button className="border border-gray-400 px-4 py-2 rounded-md text-sm uppercase tracking-wide hover:bg-yellow-400 hover:text-black transition">
+            <button
+              onClick={scrollToTop}
+              className="border border-gray-400 px-4 py-2 rounded-md text-sm uppercase tracking-wide hover:bg-yellow-400 hover:text-black transition"
+            >
               ↑ Back to top
             </button>
           </div>
