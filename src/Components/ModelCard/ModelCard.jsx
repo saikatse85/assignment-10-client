@@ -8,7 +8,7 @@ const ModelCard = ({ model }) => {
   return (
     <div>
       <div
-        className="card bg-base-100 shadow-sm transition-transform transform hover:scale-105"
+        className="card bg-base-100 shadow-sm transition-transform transform hover:scale-105 h-[380px] flex flex-col"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
