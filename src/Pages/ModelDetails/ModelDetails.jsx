@@ -104,10 +104,6 @@ const ModelDetails = () => {
 
   return (
     <div>
-      <h2 className="font-bold text-4xl md:text-5xl text-center pt-10 pb-5 text-[#0d3c3b]">
-        Model <span className="text-[#0f7c76]">Details</span>
-      </h2>
-
       {model && (
         <ModelDetailsCard
           key={model._id}

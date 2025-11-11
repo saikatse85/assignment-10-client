@@ -7,6 +7,7 @@ import {
 import MyContainer from "../MyContainer/MyContainer";
 import { Link } from "react-router";
 import logo from "/logo.png";
+
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -31,8 +32,8 @@ const Footer = () => {
             </div>
 
             <p className="text-sm leading-relaxed text-gray-300 mb-6">
-              Empowering physicians with advanced multi-modal tools to improve
-              treatment selection and patient outcomes.
+              Organize, manage, and deploy AI models efficiently. Your hub for
+              tracking frameworks, datasets, and model performance.
             </p>
 
             <div className="flex items-center gap-4 mb-6">
@@ -63,38 +64,53 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Site Map</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li>
-                <a href="#" className="hover:text-yellow-400 transition">
-                  Homepage
+                <a
+                  href="https://github.com/saikatse85/assignment-10-client.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-yellow-400 transition"
+                >
+                  GitHub Repository Client-side.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/saikatse85/assignment-10-server.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-yellow-400 transition"
+                >
+                  GitHub Repository Server-side.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/username/repo2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-yellow-400 transition"
+                >
+                  Live website link.
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-yellow-400 transition">
-                  Technology
+                  Datasets
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-yellow-400 transition">
-                  Ataraxis Breast
+                  Analytics
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-yellow-400 transition">
-                  Resources & News
+                  Resources
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-yellow-400 transition">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-yellow-400 transition">
-                  Contact Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-yellow-400 transition">
-                  Portal
+                  Contact Support
                 </a>
               </li>
             </ul>
@@ -111,20 +127,21 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#" className="hover:text-yellow-400 transition">
-                  Terms of Services
+                  Terms of Service
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-yellow-400 transition">
-                  Lawyer's Corners
+                  Licensing
                 </a>
               </li>
             </ul>
           </div>
         </div>
+
         {/* --- Bottom Bar --- */}
         <div className="bg-yellow-500 text-black text-center text-xs font-semibold py-2 mt-10 rounded-b-2xl">
-          Copyright © 2025, Site name. All Rights Reserved.
+          Copyright © 2025, ModelVault. All Rights Reserved.
         </div>
       </MyContainer>
     </footer>

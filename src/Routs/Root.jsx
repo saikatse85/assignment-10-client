@@ -10,6 +10,7 @@ import AddModel from "../Pages/AddModel/AddModel";
 import UpdateModel from "../Pages/UpdateModel/UpdateModel";
 import MyModels from "../Pages/MyModels/MyModels";
 import MyPurchase from "../Pages/MyPurchase/MyPurchase";
+import Error from "../Pages/Error/Error";
 
 const router = createBrowserRouter([
   {
@@ -72,11 +73,11 @@ const router = createBrowserRouter([
           </PrivateRout>
         ),
       },
-      {
-        path: "/*",
-        element: <Error></Error>,
-      },
     ],
+  },
+  {
+    path: "/*",
+    element: <Error></Error>,
   },
 ]);
 export default router;
