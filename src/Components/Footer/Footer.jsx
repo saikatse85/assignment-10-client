@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa6";
 import MyContainer from "../MyContainer/MyContainer";
 import { Link } from "react-router";
-
+import logo from "/logo.png";
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -22,7 +22,12 @@ const Footer = () => {
           {/* --- Left Section --- */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Link to="/" className="flex items-center gap-2"></Link>
+              <Link to="/" className="flex items-center gap-2">
+                <img className="h-8 w-8" src={logo} alt="" />
+                <span className="text-2xl font-bold text-[#0f7c76]">
+                  ModelVault
+                </span>
+              </Link>
             </div>
 
             <p className="text-sm leading-relaxed text-gray-300 mb-6">

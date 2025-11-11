@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { TfiViewList } from "react-icons/tfi";
 import { MdAddBox } from "react-icons/md";
 import { BiSolidPurchaseTag } from "react-icons/bi";
-
+import logo from "/logo.png";
 const Navbar = () => {
   const { user, setUser, signOutUser, loading } = use(AuthContext);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -77,9 +77,16 @@ const Navbar = () => {
                   </MyLink>
                 </li>
                 <li>
+                  <MyLink to={"/all-models"}>
+                    <TfiViewList />
+                    All Models
+                  </MyLink>
+                </li>
+                <li>
                   {user && (
                     <MyLink to={"/all-models"}>
-                      <MdAddBox /> Add Model
+                      <MdAddBox />
+                      Add Model
                     </MyLink>
                   )}
                 </li>
@@ -88,30 +95,10 @@ const Navbar = () => {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <svg
-                className="h-8 w-8 text-[#0d3c3b]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M8 3C5.8 3 4 4.8 4 7v4c0 2.2 1.8 4 4 4" />
-                <path d="M16 3c2.2 0 4 1.8 4 4v4c0 2.2-1.8 4-4 4" />
-
-                <circle cx="8" cy="8" r="1.3" />
-                <circle cx="12" cy="6" r="1.3" />
-                <circle cx="16" cy="9" r="1.3" />
-
-                <path d="M8.5 8.5 11.2 6.8" />
-                <path d="M12.8 6.5 15.2 8.5" />
-
-                <rect x="7" y="14.5" width="10" height="2.3" rx="0.7" />
-                <rect x="8" y="18" width="8" height="2.3" rx="0.7" />
-              </svg>
-
-              <span className="text-xl font-bold">AI Model Manager</span>
+              <img className="h-8 w-8" src={logo} alt="" />
+              <span className="text-2xl font-bold text-[#0f7c76]">
+                ModelVault
+              </span>
             </Link>
           </div>
 
@@ -126,7 +113,8 @@ const Navbar = () => {
               </li>
               <li>
                 <MyLink to={"/all-models"}>
-                  <TfiViewList /> View Model
+                  <TfiViewList />
+                  All Models
                 </MyLink>
               </li>
               <li>
