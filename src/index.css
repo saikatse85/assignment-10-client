@@ -7,5 +7,5 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 .btn-primary-color{
-  @apply bg-gradient-to-br from-[#0d3c3b] to-[#0f7c76]
+  @apply bg-gradient-to-br from-[#0d3c3b] to-[#0f7c76] hover:bg-gradient-to-br from-[#0f7c76] to-[#0d3c3b]
 }
