@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import ModelCard from "../../Components/ModelCard/ModelCard";
 import { ScaleLoader } from "react-spinners";
 import MyContainer from "../../Components/MyContainer/MyContainer";
+import MyModelCard from "../MyModelCard/MyModelCard";
 
 const MyModels = () => {
   const { user } = use(AuthContext);
@@ -41,7 +42,7 @@ const MyModels = () => {
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {models.map((model) => (
-            <ModelCard key={model._id} model={model}></ModelCard>
+            <MyModelCard key={model._id} model={model}></MyModelCard>
           ))}
         </div>
       </MyContainer>

@@ -65,7 +65,7 @@ const ModelDetailsCard = ({ model, user, handleDelete, handlePurchase }) => {
             </div>
 
             {/* Date */}
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-800">
               <FaRegClock /> Created on:{" "}
               {new Date(createdAt).toLocaleDateString()}
             </div>
