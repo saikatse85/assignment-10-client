@@ -1,15 +1,14 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { ScaleLoader } from "react-spinners";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../Auth/AuthContext/AuthContext";
 
 const UpdateModel = () => {
   const { id } = useParams();
-  const { user } = use(AuthContext);
   const [model, setModel] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -48,6 +47,7 @@ const UpdateModel = () => {
       .then((data) => {
         toast.success("Model Update successfully!");
         console.log(data.result);
+        navigate(`/model-details/${id}`);
         setLoading(false);
       })
       .catch((err) => {
