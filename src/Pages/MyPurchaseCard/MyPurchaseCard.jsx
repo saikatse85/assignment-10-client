@@ -14,7 +14,6 @@ const MyPurchaseCard = ({ purchase, onDelete }) => {
     _id,
     modelId,
   } = purchase;
-
   // Confirm delete
   const handleDelete = () => {
     Swal.fire({

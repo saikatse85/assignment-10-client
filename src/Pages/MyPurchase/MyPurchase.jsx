@@ -15,10 +15,30 @@ const MyPurchase = () => {
     if (!user?.email) return;
 
     setLoading(true);
+
+    // Step 1: fetch purchases
     fetch(`http://localhost:3000/purchase?email=${user.email}`)
       .then((res) => res.json())
-      .then((data) => {
-        setPurchases(data);
+      .then(async (purchaseData) => {
+        const mergedData = await Promise.all(
+          purchaseData.map(async (purchase) => {
+            try {
+              const res = await fetch(
+                `http://localhost:3000/models/${purchase.modelId}`
+              );
+              const modelData = await res.json();
+              return {
+                ...modelData.result,
+                ...purchase,
+              };
+            } catch (err) {
+              console.error("Failed to fetch model for purchase", err);
+              return purchase;
+            }
+          })
+        );
+
+        setPurchases(mergedData);
         setLoading(false);
       })
       .catch((err) => {
@@ -72,7 +92,7 @@ const MyPurchase = () => {
           <MyPurchaseCard
             key={purchase._id}
             purchase={purchase}
-            onDelete={handleDelete} // Pass delete handler
+            onDelete={handleDelete}
           />
         ))}
       </div>
