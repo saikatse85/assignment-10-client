@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { LuBrainCircuit } from "react-icons/lu";
 import { MdOutlineDataset } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
@@ -7,6 +7,7 @@ import { Link } from "react-router";
 
 const ModelDetailsCard = ({ model, user, handleDelete, handlePurchase }) => {
   const {
+    _id,
     name,
     framework,
     useCase,
@@ -16,7 +17,28 @@ const ModelDetailsCard = ({ model, user, handleDelete, handlePurchase }) => {
     createdBy,
     createdAt,
     purchased,
+    averageRating,
   } = model;
+  const [userRating, setUserRating] = useState(0);
+  const [avgRating, setAvgRating] = useState(averageRating || 0);
+
+  // Rating handler
+  const handleRate = (rate) => {
+    setUserRating(rate);
+
+    fetch(`http://localhost:3000/models/${_id}/rate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ rating: rate }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAvgRating(data.averageRating); // update average
+      })
+      .catch((err) => {
+        console.error("Error rating model:", err);
+      });
+  };
 
   return (
     <div className="relative bg-gradient-to-br from-[#e0f7f4] to-[#c4f0ed] min-h-screen py-10">
@@ -65,9 +87,31 @@ const ModelDetailsCard = ({ model, user, handleDelete, handlePurchase }) => {
             </div>
 
             {/* Date */}
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-800">
-              <FaRegClock /> Created on:{" "}
-              {new Date(createdAt).toLocaleDateString()}
+            <div className=" flex justify-between items-center">
+              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-800">
+                <FaRegClock /> Created on:{" "}
+                {new Date(createdAt).toLocaleDateString()}
+              </div>
+              {/* Rating */}
+              <div className="mt-2 flex items-center space-x-2">
+                <span className="font-medium bg-gradient-to-r from-[#0d3c3b] to-[#0f7c76] bg-clip-text text-transparent">
+                  Give Rating this Model:
+                </span>
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleRate(i)}
+                    className={`text-xl ${
+                      i <= userRating ? "text-yellow-400" : "text-gray-300"
+                    }`}
+                  >
+                    ★
+                  </button>
+                ))}
+                <span className="ml-2 text-sm text-gray-500">
+                  ({avgRating.toFixed(1)})
+                </span>
+              </div>
             </div>
 
             {/* Use Case */}
