@@ -85,7 +85,7 @@ const AddModel = () => {
               <input
                 type="text"
                 name="name"
-                className="w-full p-3 rounded-xl border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-3 rounded-xl bg-white/80 border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
                 placeholder="Enter model name"
               />
             </div>
@@ -99,7 +99,7 @@ const AddModel = () => {
                 <input
                   type="text"
                   name="framework"
-                  className="w-full p-3 rounded-xl border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
+                  className="w-full p-3 rounded-xl bg-white/80 border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
                   placeholder="Enter framework"
                 />
               </div>
@@ -110,7 +110,7 @@ const AddModel = () => {
                 <input
                   type="text"
                   name="useCase"
-                  className="w-full p-3 rounded-xl border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
+                  className="w-full p-3 rounded-xl bg-white/80 border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
                   placeholder="Enter use case"
                 />
               </div>
@@ -124,7 +124,7 @@ const AddModel = () => {
               <input
                 type="text"
                 name="dataset"
-                className="w-full p-3 rounded-xl border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-3 rounded-xl bg-white/80 border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
                 placeholder="Enter dataset name"
               />
             </div>
@@ -137,7 +137,7 @@ const AddModel = () => {
               <input
                 type="text"
                 name="image"
-                className="w-full p-3 rounded-xl border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-3 rounded-xl bg-white/80 border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
                 placeholder="Paste image URL"
               />
             </div>
@@ -149,7 +149,9 @@ const AddModel = () => {
               </label>
               <textarea
                 name="description"
-                className="w-full p-3 rounded-xl min-h-[180px] border border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-3 rounded-xl min-h-[180px] border border-teal-300 
+  bg-white/80 text-[#0d3c3b] placeholder:text-gray-500
+  focus:ring-2 focus:ring-teal-500 outline-none shadow-inner"
                 placeholder="Write a detailed description..."
               ></textarea>
             </div>
