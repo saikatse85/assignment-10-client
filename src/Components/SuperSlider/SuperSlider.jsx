@@ -225,7 +225,7 @@ const SuperSlider = ({ autoplay = true, interval = 4500 }) => {
               strokeLinecap="round"
             />
           </svg>
-          <span className="text-sm font-semibold">AI Model Manager</span>
+          <span className="text-sm font-semibold">AI ModelVault</span>
         </div>
       </div>
     </div>

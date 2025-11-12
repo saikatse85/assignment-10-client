@@ -26,7 +26,7 @@ const Footer = () => {
               <Link to="/" className="flex items-center gap-2">
                 <img className="h-8 w-8" src={logo} alt="" />
                 <span className="text-2xl font-bold text-[#0f7c76]">
-                  ModelVault
+                  AI ModelVault
                 </span>
               </Link>
             </div>
