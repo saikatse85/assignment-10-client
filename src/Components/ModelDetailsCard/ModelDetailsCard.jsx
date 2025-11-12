@@ -28,7 +28,9 @@ const ModelDetailsCard = ({ model, user, handleDelete, handlePurchase }) => {
 
     fetch(`http://localhost:3000/models/${_id}/rate`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ rating: rate }),
     })
       .then((res) => res.json())
@@ -45,11 +47,11 @@ const ModelDetailsCard = ({ model, user, handleDelete, handlePurchase }) => {
       {/* Optional overlay for subtle effect */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#0d3c3b]/10 to-[#0f7c76]/10"></div>
 
-      <h2 className="relative z-10 font-bold text-4xl md:text-5xl text-center pt-10 pb-5 text-[#0d3c3b]">
+      <h2 className="relative z-0 font-bold text-4xl md:text-5xl text-center pt-10 pb-5 text-[#0d3c3b]">
         Model <span className="text-[#0f7c76]">Details</span>
       </h2>
 
-      <div className="relative z-10 max-w-4xl mx-auto p-6">
+      <div className="relative z-0 max-w-4xl mx-auto p-6">
         <div className="glass-card rounded-2xl shadow-2xl border border-white/20 overflow-hidden transition hover:shadow-3xl hover:-translate-y-1 duration-300">
           {/* Image */}
           <div className="relative w-full h-64 overflow-hidden">

@@ -35,9 +35,9 @@ const MyModels = () => {
     );
   }
   return (
-    <div>
+    <div className="py-5">
       <MyContainer>
-        <h1 className="font-bold text-4xl md:text-5xl text-center pt-10 pb-5 text-[#0d3c3b]">
+        <h1 className="font-bold text-4xl md:text-5xl text-center py-10 text-[#0d3c3b]">
           My <span className="text-[#0f7c76]">Models</span>
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

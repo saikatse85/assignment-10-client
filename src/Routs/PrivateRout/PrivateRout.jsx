@@ -5,7 +5,6 @@ import { ScaleLoader } from "react-spinners";
 
 const PrivateRout = ({ children }) => {
   const { user, loading } = use(AuthContext);
-  console.log(user);
 
   if (loading) {
     return (

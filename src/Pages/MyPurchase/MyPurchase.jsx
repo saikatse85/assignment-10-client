@@ -83,20 +83,22 @@ const MyPurchase = () => {
   }
 
   return (
-    <MyContainer>
-      <h2 className="font-bold text-4xl md:text-5xl text-center pt-10 pb-5 text-[#0d3c3b]">
-        My <span className="text-[#0f7c76]">Purchase</span>
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {purchases.map((purchase) => (
-          <MyPurchaseCard
-            key={purchase._id}
-            purchase={purchase}
-            onDelete={handleDelete}
-          />
-        ))}
-      </div>
-    </MyContainer>
+    <div className="py-5">
+      <MyContainer>
+        <h2 className="font-bold text-4xl md:text-5xl text-center pt-10 pb-10 text-[#0d3c3b]">
+          My <span className="text-[#0f7c76]">Purchase</span>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {purchases.map((purchase) => (
+            <MyPurchaseCard
+              key={purchase._id}
+              purchase={purchase}
+              onDelete={handleDelete}
+            />
+          ))}
+        </div>
+      </MyContainer>
+    </div>
   );
 };
 

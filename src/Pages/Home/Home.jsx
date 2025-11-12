@@ -16,7 +16,6 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         setLoading(true);
-        console.log(data);
         setModels(data);
         setLoading(false);
       })

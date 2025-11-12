@@ -5,11 +5,11 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
-  sendPasswordResetEmail,
+  // sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
+  // updateProfile,
 } from "firebase/auth";
 
 const googleProvider = new GoogleAuthProvider();
@@ -29,23 +29,23 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-  const updateUser = (displayName, photoURL) => {
-    setLoading(true);
-    return updateProfile(auth.currentUser, {
-      displayName,
-      photoURL,
-    });
-  };
+  // const updateUser = (displayName, photoURL) => {
+  //   setLoading(true);
+  //   return updateProfile(auth.currentUser, {
+  //     displayName,
+  //     photoURL,
+  //   });
+  // };
 
   const signOutUser = () => {
     setLoading(false);
     return signOut(auth);
   };
 
-  const resetPassword = (email) => {
-    setLoading(true);
-    return sendPasswordResetEmail(auth, email);
-  };
+  // const resetPassword = (email) => {
+  //   setLoading(true);
+  //   return sendPasswordResetEmail(auth, email);
+  // };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -63,11 +63,11 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     createUserWithEmailPassword,
-    updateUser,
+    // updateUser,
     signInWithEmailPassword,
     signInGoogle,
     signOutUser,
-    resetPassword,
+    // resetPassword,
   };
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams } from "react-router";
 import { ScaleLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../Auth/AuthContext/AuthContext";
 
 const UpdateModel = () => {
   const { id } = useParams();
+  const { user } = use(AuthContext);
   const [model, setModel] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +16,6 @@ const UpdateModel = () => {
     fetch(`http://localhost:3000/models/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setModel(data.result);
         setLoading(false);
       })

@@ -9,14 +9,18 @@ import Swal from "sweetalert2";
 const ModelDetails = () => {
   const { id } = useParams();
   const { user } = use(AuthContext);
-  const navigate = useNavigate();
   const [model, setModel] = useState({});
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Load Single Model
+  // Load ModelDetails
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/models/${id}`)
+    fetch(`http://localhost:3000/models/${id}`, {
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setModel(data.result || data);
