@@ -10,7 +10,7 @@ const ViewAllModels = () => {
   // Load all models initially
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/models")
+    fetch("https://ai-model-server-rosy.vercel.app/models")
       .then((res) => res.json())
       .then((data) => {
         setModels(data);
@@ -24,7 +24,9 @@ const ViewAllModels = () => {
     e.preventDefault();
     const text_search = e.target.name?.value;
 
-    fetch(`http://localhost:3000/search?search=${text_search}`)
+    fetch(
+      `https://ai-model-server-rosy.vercel.app/search?search=${text_search}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setModels(data);
@@ -35,7 +37,9 @@ const ViewAllModels = () => {
   const handleFilter = (e) => {
     const framework = e.target.value;
 
-    fetch(`http://localhost:3000/filter?framework=${framework}`)
+    fetch(
+      `https://ai-model-server-rosy.vercel.app/filter?framework=${framework}`
+    )
       .then((res) => res.json())
       .then((data) => setModels(data))
       .catch((err) => console.log(err));

@@ -12,7 +12,9 @@ const MyModels = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-models?email=${user.email}`)
+    fetch(
+      `https://ai-model-server-rosy.vercel.app/my-models?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setModels(data);

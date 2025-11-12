@@ -12,7 +12,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:3000/latest-models")
+    fetch("https://ai-model-server-rosy.vercel.app/latest-models")
       .then((res) => res.json())
       .then((data) => {
         setLoading(true);

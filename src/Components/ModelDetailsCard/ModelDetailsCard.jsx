@@ -26,7 +26,7 @@ const ModelDetailsCard = ({ model, user, handleDelete, handlePurchase }) => {
   const handleRate = (rate) => {
     setUserRating(rate);
 
-    fetch(`http://localhost:3000/models/${_id}/rate`, {
+    fetch(`https://ai-model-server-rosy.vercel.app/models/${_id}/rate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ const UpdateModel = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/models/${id}`)
+    fetch(`https://ai-model-server-rosy.vercel.app/models/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setModel(data.result);
@@ -37,7 +37,7 @@ const UpdateModel = () => {
 
     setLoading(true);
 
-    fetch(`http://localhost:3000/models/${model._id}`, {
+    fetch(`https://ai-model-server-rosy.vercel.app/models/${model._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

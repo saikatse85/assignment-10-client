@@ -27,7 +27,7 @@ const AddModel = () => {
       purchasedBy: user?.email,
     };
 
-    fetch("http://localhost:3000/models", {
+    fetch("https://ai-model-server-rosy.vercel.app/models", {
       method: "POST",
       headers: {
         "content-type": "application/json",

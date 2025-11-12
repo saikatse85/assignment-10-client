@@ -17,14 +17,16 @@ const MyPurchase = () => {
     setLoading(true);
 
     // Step 1: fetch purchases
-    fetch(`http://localhost:3000/purchase?email=${user.email}`)
+    fetch(
+      `https://ai-model-server-rosy.vercel.app/purchase?email=${user.email}`
+    )
       .then((res) => res.json())
       .then(async (purchaseData) => {
         const mergedData = await Promise.all(
           purchaseData.map(async (purchase) => {
             try {
               const res = await fetch(
-                `http://localhost:3000/models/${purchase.modelId}`
+                `https://ai-model-server-rosy.vercel.app/models/${purchase.modelId}`
               );
               const modelData = await res.json();
               return {
@@ -49,7 +51,7 @@ const MyPurchase = () => {
 
   // Delete handler
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/purchase/${id}`, {
+    fetch(`https://ai-model-server-rosy.vercel.app/purchase/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

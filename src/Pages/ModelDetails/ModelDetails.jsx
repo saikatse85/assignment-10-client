@@ -16,7 +16,7 @@ const ModelDetails = () => {
   // Load ModelDetails
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/models/${id}`, {
+    fetch(`https://ai-model-server-rosy.vercel.app/models/${id}`, {
       headers: {
         authorization: `Bearer ${user?.accessToken}`,
       },
@@ -41,7 +41,7 @@ const ModelDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/models/${id}`, {
+        fetch(`https://ai-model-server-rosy.vercel.app/models/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
@@ -71,7 +71,7 @@ const ModelDetails = () => {
   };
 
   const handlePurchase = () => {
-    fetch(`http://localhost:3000/purchase`, {
+    fetch(`https://ai-model-server-rosy.vercel.app/purchase`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
